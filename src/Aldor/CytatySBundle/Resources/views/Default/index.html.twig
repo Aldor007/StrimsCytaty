@@ -1,0 +1,29 @@
+{% extends "AldorCytatySBundle::layout.html.twig" %}
+{% block title%}
+Lista cytatów z Strims.pl
+{% endblock %}
+{% block body %}
+
+
+      <div class='span9 main'>
+        <div class="hero-unit">
+         <h1>Quote list</h1>
+            <p>Lista Cytattów.</p>
+            <p><a href="#" class="btn btn-primary btn-large">Dowiedz się więcej</a></p>
+          </div>
+<h2>Ostatnie dodane cytaty</h2>
+ Sortowanie po {{ knp_pagination_sortable(quotes, 'Upvotes', 'q.upvotes') }}
+    {% if quotes.isSorted('a.date') %} class="sorted"{% endif %}{{ knp_pagination_sortable(quotes, 'Data', 'q.date') }}
+
+{% include "AldorCytatySBundle::quotesfor.html.twig"  %}
+
+
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(quotes) }}
+</div>
+
+
+      </div>
+        {% endblock %}

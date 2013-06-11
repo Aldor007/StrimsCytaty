@@ -1,0 +1,24 @@
+{% extends "AldorCytatySBundle:Search:index.html.twig" %}
+
+{% block results %}
+<h3>Wyniki wyszukiwania</h3>
+{% for entity in quotes %}
+                                              <blockquote>
+                  <q>{{ entity.text }}</q>
+                  <footer><small><cite title="Aytor">
+                  {{ entity.author |raw }}</cite></small>
+
+                  </footer>
+                  </blockquote>
+                    <span>Dodane przez {{ entity.user }} {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %} Ocena {{ entity.votes }}
+                 <span class="strimslink"><a class="btn text-right " href="http://strims.pl{{ entity.url }}">Link</a></span></span>
+ {% else %}
+         <p class="text-error">Brak wyników.</p>
+
+         {% endfor %}
+
+      </div>
+
+
+
+        {% endblock %}

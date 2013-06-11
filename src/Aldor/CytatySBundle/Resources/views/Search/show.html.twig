@@ -1,0 +1,17 @@
+{% extends "AldorCytatySBundle::layout.html.twig" %}
+{% block body %}
+
+
+      <div class='span9 main'>
+        <h2>Wyszukaj</h2>
+<form action="{{ path('searchauthor') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button class="btn" type="submit">Szukaj</button>
+        </p>
+    </form>
+
+
+      </div>
+
+        {% endblock %}

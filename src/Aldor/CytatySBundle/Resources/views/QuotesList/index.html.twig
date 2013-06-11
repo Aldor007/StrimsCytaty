@@ -1,0 +1,22 @@
+{% extends "AldorCytatySBundle::layout.html.twig" %}
+{% block body %}
+
+
+      <div class='span9 main'>
+       <h2>Listy cytatów</h2>
+
+
+{% for entity in quoteslist %}
+                  <p><a href="{{ path('aldor_quoteslist',{'id':entity.id})  }}"> Lista z {{ entity.enddate|date(' d m') }}</a></p>
+         {% endfor %}
+
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(quoteslist) }}
+</div>
+
+
+      </div>
+
+        {% endblock %}

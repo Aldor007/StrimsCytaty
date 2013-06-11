@@ -1,0 +1,18 @@
+{% for entity in quotes %}
+                                              <blockquote>
+                  <q>{{ entity.text|raw }}</q>
+                  <footer><small><cite title="Autor">
+                  {{ entity.author |raw }}</cite></small>
+
+                  </footer>
+                  </blockquote>
+                    <span>Dodane przez <a href="http://strims.pl/u/{{ entity.user }}">@{{ entity.user }}</a>
+                    {% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %} Ocena {{ entity.votes }}
+
+                    {% if entity.quoteslist %} Na liście z <a href="{{ path('aldor_quoteslist',{'id': entity.quoteslist.id}) }}">{{ entity.quoteslist.enddate |date('d m') }}</a>{% endif %}
+                 <span class="strimslink"><a class="btn text-right " href="http://strims.pl{{ entity.url }}">Link</a></span></span>
+ {% else %}
+         <p class="text-error">Brak wyników.</p>
+
+         {% endfor %}
+

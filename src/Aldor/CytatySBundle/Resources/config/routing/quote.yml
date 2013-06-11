@@ -1,0 +1,30 @@
+aldor_quote:
+    pattern:  /
+    defaults: { _controller: "AldorCytatySBundle:Quote:index" }
+
+quote_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AldorCytatySBundle:Quote:show" }
+
+quote_new:
+    pattern:  /new
+    defaults: { _controller: "AldorCytatySBundle:Quote:new" }
+
+quote_create:
+    pattern:  /create
+    defaults: { _controller: "AldorCytatySBundle:Quote:create" }
+    requirements: { _method: post }
+
+quote_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AldorCytatySBundle:Quote:edit" }
+
+quote_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AldorCytatySBundle:Quote:update" }
+    requirements: { _method: post|put }
+
+quote_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AldorCytatySBundle:Quote:delete" }
+    requirements: { _method: post|delete }

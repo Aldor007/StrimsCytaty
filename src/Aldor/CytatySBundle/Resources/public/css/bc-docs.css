@@ -1,0 +1,56 @@
+.masthead h1 {
+    font-size: 100px;
+}
+
+blockquote{
+-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+-moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+box-shadow: 0 0 6px rgba(0,0,0,0.5);
+margin: 1.5em 0 1.5em -1.5em;
+padding: .75em .5em .75em 1em;
+background: #fff;
+font-style: italic;
+}
+ blockquote, footer {
+font-size: 1em;
+line-height: 1.5;
+}
+/* for two levels of nested quotations */
+q {quotes: '“' '”' '‘' '’';}
+ /* extra content definitions for pre-2011 WebKit */
+q:before {content: '“'; content: open-quote;}
+q:after {content: '”'; content: close-quote;}
+q q:before {content: '‘'; content: open-quote;}
+q q:after {content: '’'; content: close-quote;}
+  /* q in blockquote */
+blockquote q:before {content: '‘'; content: open-quote;}
+blockquote q:after {content: '’'; content: close-quote;}
+blockquote q q:before {content: '“'; content: open-quote;}
+blockquote q q:after {content: '”'; content: close-quote;}
+  /* blockquote hanging opening quote */
+blockquote:before {display: block; height: 0; content: "“"; margin-left: -.95em; font: italic 400%/1 Cochin,Georgia,"Times New Roman",serif; color: #999;}
+span.strimslink
+{
+float: right;
+}
+a.asc
+{
+background: url('../images/sort-ascending-icon.png') no-repeat;
+padding: 5px 5px 5px 25px;
+
+height: 38px;
+
+}
+a.desc
+{
+background: url('../images/sort-descending-icon.png') no-repeat;
+padding: 5px 5px 5px 25px;
+
+height: 38px;
+
+}
+div#liststat
+{
+display: none;
+
+}

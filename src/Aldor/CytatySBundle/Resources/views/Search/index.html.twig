@@ -1,0 +1,68 @@
+{% extends "AldorCytatySBundle::layout.html.twig" %}
+
+
+{% block stylesheet %}
+    <link href="{{ asset('bundles/aldorcytatys/css/ui-lightness/jquery-ui-1.9.2.custom.css') }}" rel="stylesheet" />
+
+
+    {{ form_stylesheet(form) }}
+
+
+{% endblock %}
+
+
+ {% block sidebar %}
+  {{ knp_menu_render('AldorCytatySBundle:Builder:navlistSearch', {'nav_type': 'navlist'}) }}
+
+ {% endblock %}
+
+
+{% block body %}
+      <div class='span9 main'>
+        <h2>Wyszukaj {{ header }}</h2>
+<form action="{{ path('aldor_postsearch_' ~ searching) }}" method="get" accept-charset="utf-8" >
+        {{ form_widget(form) }}
+        <p>
+            <button class="btn" type="submit">Szukaj</button>
+        </p>
+    </form>
+{% block results %}
+{% endblock %}
+
+
+
+      </div>
+
+        {% endblock %}
+
+{% block javascript %}
+  <script src="{{ asset('bundles/aldorcytatys/js/jquery-ui-1.9.2.custom.js') }}"></script>
+
+  <script>
+
+      function monkeyPatchAutocomplete() {
+
+          // Don't really need to save the old fn,
+          // but I could chain if I wanted to
+          var oldFn = $.ui.autocomplete.prototype._renderItem;
+
+          $.ui.autocomplete.prototype._renderItem = function( ul, item) {
+              var re = new RegExp("^" + this.term, "i") ;
+              var t = item.label.replace(re,"<span style='font-weight:bold;color:Blue;'>" + this.term + "</span>");
+              return $( "<li></li>" )
+                  .data( "item.autocomplete", item )
+                  .append( "<a>" + t + "</a>" )
+                  .appendTo( ul );
+          };
+      }
+$(document).ready(function() {
+
+          monkeyPatchAutocomplete();
+          });
+
+  </script>
+
+
+{{ form_javascript(form) }}
+{% endblock %}
+

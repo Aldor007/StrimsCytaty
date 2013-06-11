@@ -1,0 +1,78 @@
+aldor_search:
+    pattern:  /search/
+    defaults: { _controller: AldorCytatySBundle:Search:index }
+ 
+
+
+#author
+aldor_search_author:
+    pattern:  /search/author/
+    defaults: { _controller: AldorCytatySBundle:Search:index, page:  1 }
+    requirements:
+               _method: GET
+
+aldor_postsearch_author:
+    pattern:  /author/
+    defaults: { _controller: AldorCytatySBundle:Search:search,page: 1 }
+ajax_search_author:
+    pattern:  ajax/search/author/
+    defaults: { _controller: AldorCytatySBundle:Ajax:search }
+    requirements:
+               _method: GET
+#endauthot
+
+#user
+aldor_search_user:
+    pattern:  /search/user/
+    defaults: { _controller: AldorCytatySBundle:Search:index }
+    requirements:
+               _method: GET
+
+aldor_postsearch_user:
+    pattern:  /user/
+    defaults: { _controller: AldorCytatySBundle:Search:search, page: 1 }
+ajax_search_user:
+    pattern:  ajax/search/user/
+    defaults: { _controller: AldorCytatySBundle:Ajax:search }
+    requirements:
+               _method: GET
+#enduser
+
+
+#intext
+aldor_search_text:
+    pattern:  /search/intext/
+    defaults: { _controller: AldorCytatySBundle:Search:index }
+    requirements:
+               _method: GET
+
+aldor_postsearch_text:
+    pattern:  /intext/
+    defaults: { _controller: AldorCytatySBundle:Search:search,page: 1  }
+ajax_search_text:
+    pattern:  ajax/search/intext/
+    defaults: { _controller: AldorCytatySBundle:Ajax:textSearch }
+    requirements:
+               _method: GET
+#endintext
+aldor_quoteslist:
+    pattern:  /showlist{id},page,{page}.html
+    defaults: { _controller: AldorCytatySBundle:QuotesList:show,page: 1 }
+
+aldor_qouteslistindex:
+    pattern:  /qoutelist/{page}
+    defaults: { _controller: AldorCytatySBundle:QuotesList:index,page: 1 }
+    requirements:
+        page: ".+"
+
+
+
+
+aldor_quotes:
+        resource: "@AldorCytatySBundle/Resources/config/routing/quote.yml"
+        prefix:   /quote
+
+aldor_homepage:
+    pattern:  /{page}
+    defaults: { _controller: AldorCytatySBundle:Default:index, page:1 }
+

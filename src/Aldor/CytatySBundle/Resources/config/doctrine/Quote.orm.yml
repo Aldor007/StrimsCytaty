@@ -1,0 +1,43 @@
+#src/Aldor/StrimsCytatyBundle/Resources/config/doctrine/Quote.orm.yml
+Aldor\CytatySBundle\Entity\Quote:
+    type: entity
+    repositoryClass: Aldor\CytatySBundle\Repository\QuoteRepository
+    table: quote
+    id:
+        id:
+            type: integer
+            generator: { strategy:AUTO }
+    fields:
+        date:
+            type: datetime
+        user:
+            type: string
+            length: 200
+        url:
+            type: string
+            length: 255
+        text:
+            type: text
+        author:
+            type: string
+            length: 255
+            nullabe: true
+        upvotes:
+            type: integer
+        downvotes:
+            type: integer
+        votes:
+            type: integer
+        additionalinfo:
+            nullabe: true
+            type: string
+            length: 200
+    manyToOne:
+        quoteslist:
+            targetEntity: QuotesList
+            inversedBy: quotes
+            joinColumn:
+                name: quotelistid
+                referencedColumnName: id
+
+

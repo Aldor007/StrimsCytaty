@@ -1,0 +1,29 @@
+Aldor\CytatySBundle\Entity\QuotesList:
+    type: entity
+    table: quoteslist
+    repositoryClass: Aldor\CytatySBundle\Repository\QuotesListRepository
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        startdate:
+            type: datetime
+            nullable: false
+        enddate:
+            type: datetime
+            nullable: false
+        quotecount:
+            type: integer
+            nullable: true
+            default: 0
+        stats:
+            type: text
+    oneToMany:
+        quotes:
+            targetEntity: Quote
+            mappedBy: quoteslist
+    lifecycleCallbacks: {  }

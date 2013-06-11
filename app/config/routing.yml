@@ -1,0 +1,6 @@
+aldor_cytaty_s:
+    resource: "@AldorCytatySBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+

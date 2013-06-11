@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<title>{% block title %}strimscytaty.pl{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cytaty z strims.pl ">
+<meta name="author" content="Aldor">
+
+<!-- Use precompiled CSS files -->
+<!-- {{ "{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}" }} -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap_responsive_1.css') }}">
+
+<!-- Use Assetic -->
+<!-- {{ "<link rel=\"stylesheet\" href=\"{{ asset('bundles/braincraftedbootstrap/css/bootstrap.compiled.css') }}\">" }} -->
+
+<link rel="stylesheet" href="{{ asset('bundles/aldorcytatys/css/docs.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/aldorcytatys/css/bc-docs.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/aldorcytatys/css/google-code-prettify.css') }}">
+{% block stylesheet %}{% endblock %}
+
+
+{% include 'BcBootstrapBundle::_html5shiv.html.twig' %}
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="brand" href="/">Strims Cytaty</a>
+          <div class="nav-collapse collapse">
+            {{ knp_menu_render('AldorCytatySBundle:Builder:navbar', {'nav_type': 'navbar'}) }}
+          </div>
+        </div>
+      </div>
+    </div>
+<div class='container' >
+<div class="row">
+ <div class='span3 sidebar'>
+        <h2>Sidebar</h2>
+
+       <div class="nav nav-list bs-docs-sidenav affix">
+ {{ knp_menu_render('AldorCytatySBundle:Builder:navlist', {'nav_type': 'navlist'}) }}
+ {% block sidebar %}
+ {% endblock %}
+</div>
+
+        </div>
+
+{% block body %}{% endblock %}
+</div>
+</div>
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+      </div>
+    </footer>
+
+<!-- Use precompiled JavaScript files (includes jQuery) -->
+<!-- {{ "{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}" }} -->
+
+<!-- Use Assetic -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<!-- {{ "<script src=\"{{ asset('bundles/braincraftedbootstrap/js/bootstrap.compiled.js') }}\"></script>" }}-->
+
+<script src="{{ asset('bundles/aldorcytatys/js/application.js') }}"></script>
+<script src="{{ asset('bundles/aldorcytatys/js/google-code-prettify.js') }}"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+{% block javascript %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+{% extends "AldorCytatySBundle:Search:index.html.twig" %}
+
+{% block results %}
+<h3>Wyniki wyszukiwania</h3>
+
+ Sortowanie po {{ knp_pagination_sortable(quotes, 'Upvotes', 'q.upvotes') }}
+    {% if quotes.isSorted('a.date') %} class="sorted"{% endif %}{{ knp_pagination_sortable(quotes, 'Data', 'q.date') }}
+{% include "AldorCytatySBundle::quotesfor.html.twig"  %}
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(quotes) }}
+</div>
+
+      </div>
+
+
+
+        {% endblock %}
