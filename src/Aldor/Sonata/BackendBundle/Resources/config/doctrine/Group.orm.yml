@@ -1,0 +1,9 @@
+#src/Aldor/InftechBundle/Resources/config/doctrine/Post.orm.yml
+Aldor\Sonata\BackendBundle\Entity\Group:
+    type: entity
+    table: usergroup
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
