@@ -32,6 +32,9 @@ Aldor\CytatySBundle\Entity\Quote:
             nullabe: true
             type: string
             length: 200
+        authorcorect:
+            type: boolean
+
     manyToOne:
         quoteslist:
             targetEntity: QuotesList

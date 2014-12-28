@@ -3,6 +3,7 @@
 namespace Aldor\CytatySBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Type;
 
 /**
  * Quote
@@ -26,11 +27,13 @@ class Quote
 
     /**
      * @var string
+     * @Type("string")
      */
     private $url;
 
     /**
-     * @var string
+     * @var stringi
+     * @Type("string")
      */
     private $text;
 
@@ -303,5 +306,33 @@ class Quote
     public function getAdditionalinfo()
     {
         return $this->additionalinfo;
+    }
+    /**
+     * @var boolean
+     */
+    private $authorcorect;
+
+
+    /**
+     * Set authorcorect
+     *
+     * @param boolean $authorcorect
+     * @return Quote
+     */
+    public function setAuthorcorect($authorcorect)
+    {
+        $this->authorcorect = $authorcorect;
+
+        return $this;
+    }
+
+    /**
+     * Get authorcorect
+     *
+     * @return boolean 
+     */
+    public function getAuthorcorect()
+    {
+        return $this->authorcorect;
     }
 }

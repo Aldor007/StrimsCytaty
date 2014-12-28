@@ -1,0 +1,18 @@
+#parameters:
+#    aldor_inftech.example.class: Aldor\InftechBundle\Example
+services:
+    aldor.strims.admin.quote:
+        class: Aldor\BackendBundle\Admin\QuoteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: quote, label: Cytat }
+        arguments: [null,Aldor\CytatySBundle\Entity\Quote, AldorBackendBundle:QuoteAdmin]
+
+    aldor.strims.admin.quoteslist:
+        class: Aldor\BackendBundle\Admin\QuotesListAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: quote, label: CytatListy }
+        arguments: [null,Aldor\CytatySBundle\Entity\QuotesList, AldorBackendBundle:QuotesListAdmin]
+        calls:
+          - [ addChild, [ @aldor.strims.admin.quoteslist] ]
+          - [ setSecurityContext, [ @security.context ] ]
+   

@@ -51,12 +51,12 @@ aldor_postsearch_text:
     defaults: { _controller: AldorCytatySBundle:Search:search,page: 1  }
 ajax_search_text:
     pattern:  ajax/search/intext/
-    defaults: { _controller: AldorCytatySBundle:Ajax:textSearch }
+    defaults: { _controller: AldorCytatySBundle:Ajax:textSearch,page: 1 }
     requirements:
                _method: GET
 #endintext
 aldor_quoteslist:
-    pattern:  /showlist{id},page,{page}.html
+    pattern:  /showlist/{id}/{page}
     defaults: { _controller: AldorCytatySBundle:QuotesList:show,page: 1 }
 
 aldor_qouteslistindex:
@@ -71,6 +71,9 @@ aldor_qouteslistindex:
 aldor_quotes:
         resource: "@AldorCytatySBundle/Resources/config/routing/quote.yml"
         prefix:   /quote
+aldor_homepagepage:
+    pattern:  /page={page}
+    defaults: { _controller: AldorCytatySBundle:Default:index  }
 
 aldor_homepage:
     pattern:  /{page}

@@ -45,7 +45,7 @@ class QuotesList
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -68,7 +68,7 @@ class QuotesList
     /**
      * Get startdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartdate()
     {
@@ -91,7 +91,7 @@ class QuotesList
     /**
      * Get enddate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEnddate()
     {
@@ -114,7 +114,7 @@ class QuotesList
     /**
      * Get quotecount
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuotecount()
     {
@@ -147,7 +147,7 @@ class QuotesList
     /**
      * Get quotes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getQuotes()
     {
@@ -158,6 +158,11 @@ class QuotesList
      */
     private $quotesliststt;
 
+    public function __toString() {
+        if($this->startdate)
+        return 'Lista od '.$this->startdate->format(" d.m").'do '.$this->enddate->format('d.m');
+        return 'Lista';
+    }
 
     /**
      * Set quotesliststt
@@ -175,7 +180,7 @@ class QuotesList
     /**
      * Get quotesliststt
      *
-     * @return string 
+     * @return string
      */
     public function getQuotesliststt()
     {
@@ -203,10 +208,36 @@ class QuotesList
     /**
      * Get stats
      *
-     * @return string 
+     * @return string
      */
     public function getStats()
     {
         return $this->stats;
     }
+
+    public function getStatsHTML()
+    {
+
+        $decode = json_decode($this->stats,true);
+
+        $string = array();
+        $string['heading'] = 'Wpisów '.$decode['OnList'].'/'.$decode['All'];
+        $string['items'] =array();
+        $items = $decode['Items'];
+        foreach($items as $item)
+        {
+            array_push($string['items'],'Wpis z '.$item['votes'].' wystąpił '.$item['occurr'].' razy');
+
+        }
+
+        $string['footer'] = 'Średnia '.$decode['Averge'];
+     //   $string = print_r($string,true);
+
+        return $string;
+    }
+public function datediffInWeeks()
+{
+    return floor($this->startdate->diff($this->enddate)->days/7);
+}
+
 }

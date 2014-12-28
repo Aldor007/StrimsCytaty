@@ -30,7 +30,7 @@ class SearchController extends Controller
             else if($searching === 'text')
                 $header = 'fraze';
             else
-                $header = 'uzytkownika';
+                $header = 'użytkownika';
 
           $form   = $this->createForm(new SearchQuoteType($searching));
 
@@ -51,7 +51,7 @@ class SearchController extends Controller
             else if($searching === 'text')
                 $header = 'fraze';
             else
-                $header = 'uzytkownika';
+                $header = 'użytkownika';
             $form   = $this->createForm(new SearchQuoteType($searching));
             $form->bind($request);//->get($fieldname)));
             $quotes = array();
@@ -61,11 +61,13 @@ class SearchController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $value = $form->getData('searching');
+            $page = $request->get('page');
             $value = $value[$fieldname];
             $quotes = $em->getRepository('AldorCytatySBundle:Quote')->searchPagination($searching,$value);
   $paginator = $this->get('knp_paginator');
         $quotes = $paginator->paginate($quotes,
-            $this->get('request')->query->get('page', 1), 10);
+            $this->get('request')->query->get('page', $page), 10);
+        $quotes->setUsedRoute($routeName);
 
 
             if($quotes)

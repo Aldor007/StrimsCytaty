@@ -28,7 +28,20 @@
         "twitter/bootstrap": "2.3.*",
         "leafo/lessphp": "*",
         "sonata-project/jquery-bundle": "*",
-           "genemu/form-bundle": "2.1.*"
+           "genemu/form-bundle": "2.1.*",
+        "sonata-project/admin-bundle": "*",
+        "sonata-project/doctrine-orm-admin-bundle": "*",
+        "sonata-project/cache-bundle": "*",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/seo-bundle": "*",
+        "friendsofsymfony/user-bundle": "*",
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "sonata-project/doctrine-extensions": "*",
+        "sonata-project/user-bundle": "dev-master",
+         "sonata-project/easy-extends-bundle": "dev-master",
+  "friendsofsymfony/rest-bundle": "*",
+          "jms/serializer-bundle": "dev-master",
+           "nelmio/api-doc-bundle": "dev-master"
 
     },
     "scripts": {
@@ -51,7 +64,7 @@
     "minimum-stability": "alpha",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
+        "symfony-web-dir": "public_html",
         "branch-alias": {
             "dev-master": "2.2-dev"
         }

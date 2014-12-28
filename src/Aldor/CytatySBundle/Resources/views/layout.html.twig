@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html {{ sonata_seo_html_attributes() }}>
+
 
 <head>
 
 <meta charset="utf-8">
 <title>{% block title %}strimscytaty.pl{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cytaty z strims.pl ">
+ {{ sonata_seo_title() }}
+        {{ sonata_seo_metadatas() }}
 <meta name="author" content="Aldor">
 
 <!-- Use precompiled CSS files -->
@@ -28,7 +30,16 @@
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-41852415-1', 'strimscytaty.pl');
+  ga('send', 'pageview');
+
+</script>
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,33 +51,37 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="brand" href="/">Strims Cytaty</a>
-          <div class="nav-collapse collapse">
-            {{ knp_menu_render('AldorCytatySBundle:Builder:navbar', {'nav_type': 'navbar'}) }}
-          </div>
+          <a class="brand" href="{{ path('aldor_homepage') }}">Strims Cytaty</a>
+
+                <div class="nav-collapse collapse">
+                    {{ knp_menu_render('AldorCytatySBundle:Builder:navbar', {'nav_type': 'navbar'}) }}
+            </div>
         </div>
       </div>
     </div>
-<div class='container' >
-<div class="row">
- <div class='span3 sidebar'>
-        <h2>Sidebar</h2>
+<div class='container'>
+    <div class="row">
+        <div class='span3 sidebar'>
+            <h2>Sidebar</h2>
 
-       <div class="nav nav-list bs-docs-sidenav affix">
- {{ knp_menu_render('AldorCytatySBundle:Builder:navlist', {'nav_type': 'navlist'}) }}
- {% block sidebar %}
- {% endblock %}
-</div>
-
+                <div class="nav nav-list bs-docs-sidenav well sidebar-nav affix">
+                {{ knp_menu_render('AldorCytatySBundle:Builder:navlist', {'nav_type': 'navlist'}) }}
+                </div>
+                {% block sidebar %}
+                {% endblock %}
+                <div class="ads">
+                    {{ aldor_ads() }}
+                </div>
         </div>
 
 {% block body %}{% endblock %}
-</div>
+    </div>
 </div>
     <!-- Footer
     ================================================== -->
     <footer class="footer">
       <div class="container">
+      &copy 2013 <a href="http://strims.pl/u/Aldor">Aldor</a>
         <p class="pull-right"><a href="#">Back to top</a></p>
       </div>
     </footer>

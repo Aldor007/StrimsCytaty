@@ -39,12 +39,8 @@ class Builder extends ContainerAware
 
         $menu->addChild('Home', array('route' => 'aldor_homepage'));
         $item = $menu->addChild('Cytaty', array('route' => 'aldor_quote'));
-        $item->setAttribute('dropdown', true);
-
         $item->addChild('Listy',array('route'=>'aldor_qouteslistindex'));
         $item2 = $item->addChild('Wyszukaj')->setAttributes(array('dropdown'=> true,'class'=>'dropdown'));
-
-        $item2->setAttribute('dropdown', true);
         $item2->addChild('Wyszukaj po autorze', array('route'=>'aldor_search_author'));
         $item2->addChild('Wyszukaj po uzytkowniku', array('route'=>'aldor_search_user'));
         $item2->addChild('Wyszukaj frazę', array('route'=>'aldor_search_text'));
@@ -67,9 +63,8 @@ class Builder extends ContainerAware
         $em  = $this->container->get('doctrine')->getManager();
       $quotesList = $em->getRepository('AldorCytatySBundle:QuotesList')->getLastQouteList(3);
         $menu = $factory->createItem('root');
-        $i = 0;
         foreach( $quotesList as $list)
-        $menu ->addChild($i++.' Lista z '.  $list->getEnddate()->format('m d'),array('route' =>'aldor_quoteslist','routeParameters' => array('id' => $list->getId())));
+        $menu ->addChild('Lista z dnia '.  $list->getEnddate()->format('d.m'),array('route' =>'aldor_quoteslist','routeParameters' => array('id' => $list->getId())));
 
         return $menu;
     }

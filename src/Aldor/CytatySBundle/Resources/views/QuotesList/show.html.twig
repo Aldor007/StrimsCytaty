@@ -1,15 +1,28 @@
 {% extends "AldorCytatySBundle::layout.html.twig" %}
+{%  block title %}Lista cytatów z {{ quoteslist.enddate|date('d.m') }} |   strimscytaty.pl{% endblock %}
+
 {% block body %}
 
 
       <div class='span9 main'>
-        <div id="liststatclick"><p>Statystki listy <a href="#">Pokaz</a></p></div>
-        <div id="liststat"><p>{{ quoteslist.stats|raw }}</p></div>
+      <div class'span4'>
+        <div id="liststatclick"><h3>Statystki listy </h3><a href="#">Pokaż</a></div>
+        <div id="liststat">
+        <header>{{ quoteslist.statshtml['heading']|raw }}</header>
 
+        {% set items=quoteslist.statshtml['items']  %}
+        <ul>
+        {% for item in quoteslist.statshtml['items'] %}
+        <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        <footer>{{ quoteslist.statshtml['footer']|raw }}</footer>
+        </div>
 
-       <h2>Cytaty z listy {{ quoteslist.enddate|date('d m') }}</h2>
+       <h2>Cytaty z listy z dnia {{ quoteslist.enddate|date('d.m') }}</h2>
+       <h6>Lista  {% if quoteslist.datediffinweeks == 1 %}  tygodniowa {% else %}  {{ quoteslist.datediffinweeks }} tygodniowa {% endif %} </h6>
 Sortowanie po {{ knp_pagination_sortable(quotes, 'Upvotes', 'q.upvotes') }}
-    {% if quotes.isSorted('q.date') %} class="sorted"{% endif %}{{ knp_pagination_sortable(quotes, 'Data', 'q.date') }}
+    {{ knp_pagination_sortable(quotes, 'Data', 'q.date') }}
 
 
 {% for entity in quotes %}
@@ -34,6 +47,7 @@ Sortowanie po {{ knp_pagination_sortable(quotes, 'Upvotes', 'q.upvotes') }}
 
 
       </div>
+      </div>
 
         {% endblock %}{% block javascript %}
 <script>
@@ -41,12 +55,12 @@ $('#liststatclick').click(function(){
 if($('#liststat').is(':hidden'))
 {
 $('#liststat').show('slow');
-$('#liststatclick p>a').text('Ukryj');
+$('#liststatclick a').text('Ukryj');
 }
 else
 {
 $('#liststat').hide('slow');
-$('#liststatclick p>a').text('Pokaz');
+$('#liststatclick a').text('Pokaz');
 
 }
 });

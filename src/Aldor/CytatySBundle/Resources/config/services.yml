@@ -1,7 +1,29 @@
-parameters:
-#    aldor_cytaty_s.example.class: Aldor\CytatySBundle\Example
-
+#parameters:
+#    aldor_inftech.example.class: Aldor\InftechBundle\Example
 services:
-#    aldor_cytaty_s.example:
-#        class: %aldor_cytaty_s.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    aldor.strims.admin.quote:
+        class: Aldor\BackendBundle\Admin\QuoteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Cytaty, label: Cytaty }
+        arguments: [null,Aldor\CytatySBundle\Entity\Quote, AldorBackendBundle:QuoteAdmin]
+  
+    aldor.strims.admin.quoteslist:
+        class: Aldor\BackendBundle\Admin\QuotesListAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Cytaty, label: Cytaty Listy }
+        arguments: [null,Aldor\CytatySBundle\Entity\QuotesList, AldorBackendBundle:QuotesListAdmin]
+
+    aldor.strims.admin.ads:
+        class: Aldor\BackendBundle\Admin\AdsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Narzędzia, label: Ads }
+        arguments: [null,Aldor\CytatySBundle\Entity\Ads, AldorBackendBundle:AdsAdmin]
+    aldor.strims.ads:
+        class:  Aldor\CytatySBundle\Controller\AdsController
+        arguments: ['@service_container']
+    aldor.strims.twig.ads:
+        class:  Aldor\CytatySBundle\Twig\AdsExtension
+        arguments: ['@service_container']
+        tags:
+            - { name: twig.extension }
+

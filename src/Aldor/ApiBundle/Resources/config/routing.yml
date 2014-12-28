@@ -1,0 +1,10 @@
+apidoc:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /doc
+
+
+api_radom:
+    pattern:  /quote/random
+    defaults: { _controller: "AldorApiBundle:Rest:random" }
+    requirements:
+        _method: GET

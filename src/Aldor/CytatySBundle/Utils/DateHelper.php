@@ -3,7 +3,8 @@ namespace Aldor\CytatySBundle\Utils;
 class DateHelper
 {
 static public function makeDate($date) {
-     $date = str_replace("dzisiaj",date('Y-m-d'),$date);
+date_default_timezone_set('Europe/Warsaw');
+    $date = str_replace("dzisiaj",date('Y-m-d'),$date);
     $date = str_replace("wczoraj",date("Y-m-d",strtotime("-1 day")),$date);
 
     $date = str_replace( 'Poniedziałek','Monday', $date);

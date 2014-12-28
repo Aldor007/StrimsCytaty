@@ -1,2 +1,4 @@
 StrimsCytaty
 ============
+http://strimscytaty.pl/
+

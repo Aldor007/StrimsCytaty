@@ -1,0 +1,25 @@
+#src/FooBundle/Resources/config/serializer/Entity.Bar.yml
+Aldor\CytatySBundle\Entity\Quote:
+    exclusion_policy: ALL
+    properties:
+        user:
+            expose: true
+            type: string
+        date:
+            expose: true
+        url:
+            expose: true
+            type: string
+        author:
+            expose: true
+            type: string
+        upvotes:
+            expose: true
+        downvotes:
+            expose: true
+        votes:
+            expose: true
+        text:
+            expose: true
+            type: string
+            inline: true

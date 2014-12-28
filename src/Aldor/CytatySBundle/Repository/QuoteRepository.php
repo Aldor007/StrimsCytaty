@@ -23,6 +23,35 @@ class QuoteRepository extends EntityRepository
 
 
     }
+ public function getQuotesAfter($date)
+    {
+        $qb = $this->createQueryBuilder('q')->where('q.date> :date')
+            ->setParameter('date',$date)
+            ->add('orderBy', 'q.votes DESC');
+
+                $query = $qb->getQuery();
+        return $query->getResult();
+
+
+    }
+    public function getRandom()
+    {
+
+        $maxid = $this->getEntityManager()->createQuery('
+            select max(q.id) as id from AldorCytatySBundle:Quote q 
+            ')->setMaxResults(1)->getResult();
+        $maxid = intval($maxid[0]['id']);
+            $randid = rand(1,$maxid);
+        $qb = $this->createQueryBuilder('q')->where('q.id >=:randid and q.id<= :randid2')
+            ->setParameter('randid', $randid )
+            ->setParameter('randid2',$randid + 2)
+            ->add('orderBy', 'q.votes DESC')->setMaxResults(1);
+
+                $query = $qb->getQuery();
+        return $query->getResult();
+    
+    
+    }
      function getQuoteListCount($startdate,$enddate)
     {
         $qb = $this->re('q.date> :startdate and q.date < :enddate')

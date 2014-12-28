@@ -1,0 +1,38 @@
+{% extends 'AldorCytatySBundle::layout.html.twig' %}
+
+{% block body%}
+<div class="block-exception">
+    <div class="block-exception-detected clear-fix">
+
+            <h1>
+                {{ exception.message|nl2br|format_file_from_text }}
+            </h1>
+
+            <div>
+                <strong>{{ status_code }}</strong>
+        </div>
+
+            {% set previous_count = exception.allPrevious|length %}
+            {% if previous_count %}
+                <div class="linked"><span><strong>{{ previous_count }}</strong> linked Exception{{ previous_count > 1 ? 's' : '' }}:</span>
+                    <ul>
+                        {% for i, previous in exception.allPrevious %}
+                            <li>
+                                {{ previous.class|abbr_class }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+
+    </div>
+</div>
+<style>
+.header, .clear-fixi
+{
+display: none;
+}
+</style>
+</div>
+{% endblock %}

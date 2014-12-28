@@ -304,4 +304,32 @@ class Quote
     {
         return $this->additionalinfo;
     }
+    /**
+     * @var boolean
+     */
+    private $authorcorect;
+
+
+    /**
+     * Set authorcorect
+     *
+     * @param boolean $authorcorect
+     * @return Quote
+     */
+    public function setAuthorcorect($authorcorect)
+    {
+        $this->authorcorect = $authorcorect;
+
+        return $this;
+    }
+
+    /**
+     * Get authorcorect
+     *
+     * @return boolean 
+     */
+    public function getAuthorcorect()
+    {
+        return $this->authorcorect;
+    }
 }

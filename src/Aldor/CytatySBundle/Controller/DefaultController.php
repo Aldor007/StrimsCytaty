@@ -16,19 +16,18 @@ class DefaultController extends Controller
     public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
-        $quotes = $em->getRepository('AldorCytatySBundle:Quote')->findAll();
          $qb = $em->createQueryBuilder('q')->select('q')->from('AldorCytatySBundle:Quote','q')->add('orderBy', 'q.date DESC');
 
         $paginator = $this->get('knp_paginator');
+
         $quotes = $paginator->paginate($qb->getQuery(),
                                 $this->get('request')->query->get('page', $page), 10);
+        $quotes->setUsedRoute('aldor_homepagepage');
 
-
-        $quotesList = $em->getRepository('AldorCytatySBundle:QuotesList')->getLastQouteList(3);
 
         return $this->render('AldorCytatySBundle:Default:index.html.twig',
             array('quotes'=>$quotes,
-            'quotesList'=>$quotesList));
+        ));
 
     }
 }
